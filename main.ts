@@ -1,31 +1,198 @@
+function pato () {
+    patinho = sprites.create(img`
+        . . . . . . . . . . b 5 b . . . 
+        . . . . . . . . . b 5 b . . . . 
+        . . . . . . b b b b b b . . . . 
+        . . . . . b b 5 5 5 5 5 b . . . 
+        . . . . b b 5 d 1 f 5 d 4 c . . 
+        . . . . b 5 5 1 f f d d 4 4 4 b 
+        . . . . b 5 5 d f b 4 4 4 4 b . 
+        . . . b d 5 5 5 5 4 4 4 4 b . . 
+        . b b d d d 5 5 5 5 5 5 5 b . . 
+        b d d d b b b 5 5 5 5 5 5 5 b . 
+        c d d b 5 5 d c 5 5 5 5 5 5 b . 
+        c b b d 5 d c d 5 5 5 5 5 5 b . 
+        c b 5 5 b c d d 5 5 5 5 5 5 b . 
+        b b c c c d d d 5 5 5 5 5 d b . 
+        . . . . c c d d d 5 5 5 b b . . 
+        . . . . . . c c c c c b b . . . 
+        `, SpriteKind.Player)
+    patinho.setPosition(74, 57)
+    controller.moveSprite(patinho)
+    patinho.setStayInScreen(true)
+}
+function chamaAviao () {
+    aviao = sprites.create(img`
+        ....ffffff.........ccc..
+        ....ff22ccf.......cc4f..
+        .....ffccccfff...cc44f..
+        ....cc24442222cccc442f..
+        ...c9b4422222222cc422f..
+        ..c9999b222222222222fc..
+        .c2b991119222222222c22c.
+        c2222b11992222ccccccc22f
+        f222222222222c222ccfffff
+        .f2222222222444222f.....
+        ..ff2222222cf444222f....
+        ....ffffffffff444222c...
+        .........f2cfffc2222c...
+        .........fcc2ffffffff...
+        ..........fc2ffff.......
+        ...........fffff........
+        `, SpriteKind.Enemy)
+    aviao.setPosition(26, 21)
+    animation.runImageAnimation(
+    aviao,
+    [img`
+        ....ffffff.........ccc..
+        ....ff22ccf.......cc4f..
+        .....ffccccfff...cc44f..
+        ....cc24442222cccc342f..
+        ...c9b4422222222cc422f..
+        ..c999b2222222222222fc..
+        .c2b99111b222222222c22c.
+        c222b111992222ccccccc22f
+        f222222222222c222ccfffff
+        .f2222222222442222f.....
+        ..ff2222222cf442222f....
+        ....ffffffffff442222c...
+        .........f2cfffc2222c...
+        .........fcc2ffffffff...
+        ..........fc2ffff.......
+        ...........fffff........
+        `,img`
+        ....ffffff.........ccc..
+        ....ff22ccf.......cc4f..
+        .....ffccccfff...cc44f..
+        ....cc24442222cccc442f..
+        ...c9b4422222222cc422f..
+        ..c9999b222222222222fc..
+        .c2b991119222222222c22c.
+        c2222b11992222ccccccc22f
+        f222222222222c222ccfffff
+        .f2222222222444222f.....
+        ..ff2222222cf444222f....
+        ....ffffffffff444222c...
+        .........f2cfffc2222c...
+        .........fcc2ffffffff...
+        ..........fc2ffff.......
+        ...........fffff........
+        `,img`
+        ...ffffff..........ccc..
+        ...ff22ccff.......c44f..
+        ....fffccccfff...c442f..
+        ....cc24442222ccc4422f..
+        ...c99b222222222cc22fc..
+        ..c999111b222222222222c.
+        .c2bb11199222ccccccc222f
+        c22222222222c222cccfffff
+        f22222222222442222ccc...
+        .f222222222224442222c...
+        ..ff2222222cffc44222c...
+        ....fffffffcffffcccc....
+        .........f2c2ffff.......
+        .........fcc2ffff.......
+        ..........ffffff........
+        ........................
+        `,img`
+        ...fffffff.........ccc..
+        ...ff22ccff.......cc4f..
+        ....fffccccfff...cc44f..
+        ....cc24442222cccc442f..
+        ...c9b4422222222cc422f..
+        ..c999b2222222222222fc..
+        .c2b99111b222222222c22c.
+        c222b111992222ccccccc22f
+        f222222222222c222ccfffff
+        .f2222222222442222f.....
+        ..ff2222222cf442222f....
+        ....ffffffffff442222c...
+        .........f2cfffc2222c...
+        .........fcc2ffffffff...
+        ..........fc2ffff.......
+        ...........fffff........
+        `,img`
+        ....ffffff..............
+        ....ff22ccf.........cf..
+        .....ffccccfff.....c4f..
+        ....cc22222222ccccc44f..
+        ...c9b244422222ccc442f..
+        ..c99944222222222242fc..
+        .c2b9992222222222222fcc.
+        c222b1111b22222222cc22cf
+        f2222211992222ccccccc22f
+        .f22222222222c222cffffff
+        ..ff2222222c442222ff....
+        ....fffffffff442222fc...
+        .........f2cff442222c...
+        .........fccfffc2222c...
+        ..........fc2ffffffff...
+        ...........c2fff........
+        `,img`
+        ....ffffff..............
+        ....ff2cccf.........cf..
+        .....ff2cccfff.....c4f..
+        ....cc22222222ccccc44f..
+        ...c9b244422222ccc442f..
+        ..c99944222222222242fc..
+        .c2b9912222222222222fcc.
+        c222b1111b22222222cc22cf
+        f2222221992222ccccccc22f
+        .f22222222222c222cffffff
+        ..ff2222222c442222ff....
+        ....fffffffff442222fc...
+        .........f2cff442222c...
+        .........fccfffc2222c...
+        ..........fc2ffffffff...
+        ...........c2fff........
+        `],
+    200,
+    true
+    )
+    animation.runMovementAnimation(
+    aviao,
+    animation.animationPresets(animation.easeRight),
+    2000,
+    true
+    )
+}
+function comida () {
+    cereja = sprites.create(img`
+        . . . . . . . . . . . 6 6 6 6 6 
+        . . . . . . . . . 6 6 7 7 7 7 8 
+        . . . . . . 8 8 8 7 7 8 8 6 8 8 
+        . . e e e e c 6 6 8 8 . 8 7 8 . 
+        . e 2 5 4 2 e c 8 . . . 6 7 8 . 
+        e 2 4 2 2 2 2 2 c . . . 6 7 8 . 
+        e 2 2 2 2 2 2 2 c . . . 8 6 8 . 
+        e 2 e e 2 2 2 2 e e e e c 6 8 . 
+        c 2 e e 2 2 2 2 e 2 5 4 2 c 8 . 
+        . c 2 e e e 2 e 2 4 2 2 2 2 c . 
+        . . c 2 2 2 e e 2 2 2 2 2 2 2 e 
+        . . . e c c e c 2 2 2 2 2 2 2 e 
+        . . . . . . . c 2 e e 2 2 e 2 c 
+        . . . . . . . c e e e e e e 2 c 
+        . . . . . . . . c e 2 2 2 2 c . 
+        . . . . . . . . . c c c c c . . 
+        `, SpriteKind.Food)
+    cereja.setPosition(randint(0, scene.screenWidth()), randint(0, scene.screenHeight()))
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.trail, 100)
+    info.changeLifeBy(-1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.trail, 100)
     info.changeScoreBy(1)
-    sprites.destroy(otherSprite, effects.trail, 200)
+    comida()
     if (info.score() == 10) {
         game.gameOver(true)
-    } else {
-        comida = sprites.create(img`
-            . . . . . . . 6 . . . . . . . . 
-            . . . . . . 8 6 6 . . . 6 8 . . 
-            . . . e e e 8 8 6 6 . 6 7 8 . . 
-            . . e 2 2 2 2 e 8 6 6 7 6 . . . 
-            . e 2 2 4 4 2 7 7 7 7 7 8 6 . . 
-            . e 2 4 4 2 6 7 7 7 6 7 6 8 8 . 
-            e 2 4 5 2 2 6 7 7 6 2 7 7 6 . . 
-            e 2 4 4 2 2 6 7 6 2 2 6 7 7 6 . 
-            e 2 4 2 2 2 6 6 2 2 2 e 7 7 6 . 
-            e 2 4 2 2 4 2 2 2 4 2 2 e 7 6 . 
-            e 2 4 2 2 2 2 2 2 2 2 2 e c 6 . 
-            e 2 2 2 2 2 2 2 4 e 2 e e c . . 
-            e e 2 e 2 2 4 2 2 e e e c . . . 
-            e e e e 2 e 2 2 e e e c . . . . 
-            e e e 2 e e c e c c c . . . . . 
-            . c c c c c c c . . . . . . . . 
-            `, SpriteKind.Food)
-        comida.setPosition(randint(5, scene.screenWidth()), randint(0, scene.screenHeight()))
     }
 })
-let comida: Sprite = null
+let projectile: Sprite = null
+let cereja: Sprite = null
+let aviao: Sprite = null
+let patinho: Sprite = null
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -148,44 +315,27 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
-comida = sprites.create(img`
-    . . . . . . . 6 . . . . . . . . 
-    . . . . . . 8 6 6 . . . 6 8 . . 
-    . . . e e e 8 8 6 6 . 6 7 8 . . 
-    . . e 2 2 2 2 e 8 6 6 7 6 . . . 
-    . e 2 2 4 4 2 7 7 7 7 7 8 6 . . 
-    . e 2 4 4 2 6 7 7 7 6 7 6 8 8 . 
-    e 2 4 5 2 2 6 7 7 6 2 7 7 6 . . 
-    e 2 4 4 2 2 6 7 6 2 2 6 7 7 6 . 
-    e 2 4 2 2 2 6 6 2 2 2 e 7 7 6 . 
-    e 2 4 2 2 4 2 2 2 4 2 2 e 7 6 . 
-    e 2 4 2 2 2 2 2 2 2 2 2 e c 6 . 
-    e 2 2 2 2 2 2 2 4 e 2 e e c . . 
-    e e 2 e 2 2 4 2 2 e e e c . . . 
-    e e e e 2 e 2 2 e e e c . . . . 
-    e e e 2 e e c e c c c . . . . . 
-    . c c c c c c c . . . . . . . . 
-    `, SpriteKind.Food)
-comida.setPosition(142, 77)
-let jogador = sprites.create(img`
-    . . . . . . . . . . b 5 b . . . 
-    . . . . . . . . . b 5 b . . . . 
-    . . . . . . b b b b b b . . . . 
-    . . . . . b b 5 5 5 5 5 b . . . 
-    . . . . b b 5 d 1 f 5 d 4 c . . 
-    . . . . b 5 5 1 f f d d 4 4 4 b 
-    . . . . b 5 5 d f b 4 4 4 4 b . 
-    . . . b d 5 5 5 5 4 4 4 4 b . . 
-    . b b d d d 5 5 5 5 5 5 5 b . . 
-    b d d d b b b 5 5 5 5 5 5 5 b . 
-    c d d b 5 5 d c 5 5 5 5 5 5 b . 
-    c b b d 5 d c d 5 5 5 5 5 5 b . 
-    c b 5 5 b c d d 5 5 5 5 5 5 b . 
-    b b c c c d d d 5 5 5 5 5 d b . 
-    . . . . c c d d d 5 5 5 b b . . 
-    . . . . . . c c c c c b b . . . 
-    `, SpriteKind.Player)
-jogador.setPosition(74, 57)
-controller.moveSprite(jogador)
-jogador.setStayInScreen(true)
-info.setScore(0)
+info.setLife(6)
+chamaAviao()
+comida()
+pato()
+game.onUpdateInterval(650, function () {
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 4 4 4 4 4 . . . . . . 
+        . . . 4 4 4 5 5 5 d 4 4 4 4 . . 
+        . . 4 d 5 d 5 5 5 d d d 4 4 . . 
+        . . 4 5 5 1 1 1 d d 5 5 5 4 . . 
+        . 4 5 5 5 1 1 1 5 1 1 5 5 4 4 . 
+        . 4 d d 1 1 5 5 5 1 1 5 5 d 4 . 
+        . 4 5 5 1 1 5 1 1 5 5 d d d 4 . 
+        . 2 5 5 5 d 1 1 1 5 1 1 5 5 2 . 
+        . 2 d 5 5 d 1 1 1 5 1 1 5 5 2 . 
+        . . 2 4 d d 5 5 5 5 d d 5 4 . . 
+        . . . 2 2 4 d 5 5 d d 4 4 . . . 
+        . . 2 2 2 2 2 4 4 4 2 2 2 . . . 
+        . . . 2 2 4 4 4 4 4 4 2 2 . . . 
+        . . . . . 2 2 2 2 2 2 . . . . . 
+        `, aviao, 0, 50)
+})
